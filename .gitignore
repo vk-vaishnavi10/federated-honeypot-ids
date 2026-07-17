@@ -6,3 +6,4 @@ real_cowrie.json
 __pycache__/
 .cache/
 cicids2017_cleaned.csv
+global_features.csv
