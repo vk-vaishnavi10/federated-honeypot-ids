@@ -5,3 +5,4 @@ real_cowrie.json
 !honeypot_features.csv
 __pycache__/
 .cache/
+cicids2017_cleaned.csv
