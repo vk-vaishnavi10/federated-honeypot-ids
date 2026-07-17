@@ -1,0 +1,7 @@
+venv/
+real_data/
+real_cowrie.json
+*.json
+!honeypot_features.csv
+__pycache__/
+.cache/
