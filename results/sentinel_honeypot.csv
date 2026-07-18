@@ -1,0 +1,5 @@
+dataset,sentinels,recall_mean,recall_std
+Honeypot,1,0.0,0.0
+Honeypot,2,0.774,0.3881
+Honeypot,3,0.9932,0.0056
+Honeypot,5,0.9982,0.0026

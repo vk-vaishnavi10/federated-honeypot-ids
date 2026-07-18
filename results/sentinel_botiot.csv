@@ -1,0 +1,4 @@
+dataset,sentinels,recall_mean,recall_std
+BoT-IoT,3,0.0333,0.0667
+BoT-IoT,5,0.8583,0.0858
+BoT-IoT,7,0.9167,0.0527

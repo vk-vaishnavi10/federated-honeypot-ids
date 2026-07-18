@@ -59,6 +59,11 @@ def run(seed,n_sent,rounds):
 print("Sentinel sweep on CICIDS2017 (brute-force hold-out, 20 rounds):\n")
 print(f"{'#sentinels':>11} | federated recall")
 print("-"*34)
+import os,csv
+os.makedirs("results",exist_ok=True)
+_rows=[]
 for ns in [3,5,7]:
     vals=[run(s,ns,20) for s in range(5)]
     v=np.array(vals); print(f"{ns:>11} | {v.mean():.3f} ± {v.std():.3f}")
+    _rows.append({"dataset":"CICIDS2017","sentinels":ns,"recall_mean":round(float(v.mean()),4),"recall_std":round(float(v.std()),4)})
+_f=open("results/sentinel_cicids.csv","w",newline="");_w=csv.DictWriter(_f,fieldnames=["dataset","sentinels","recall_mean","recall_std"]);_w.writeheader();_w.writerows(_rows);_f.close();print("saved results/sentinel_cicids.csv")

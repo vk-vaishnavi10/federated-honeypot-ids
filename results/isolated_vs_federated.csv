@@ -1,0 +1,4 @@
+class,isolated,federated,fed_std
+recon,0.0,0.986,0.011
+malware_download,0.0,0.892,0.077
+brute_force,0.0,0.997,0.002

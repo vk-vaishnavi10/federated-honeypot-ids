@@ -1,0 +1,11 @@
+dataset,sentinels,recall_mean,recall_std
+Honeypot,1,1.0,0.0
+Honeypot,2,1.0,0.0
+Honeypot,3,1.0,0.0
+Honeypot,5,1.0,0.0
+CICIDS2017,3,0.5561,0.1468
+CICIDS2017,5,0.8571,0.0392
+CICIDS2017,7,0.9755,0.0032
+BoT-IoT,3,0.0333,0.0667
+BoT-IoT,5,0.8583,0.0858
+BoT-IoT,7,0.9167,0.0527

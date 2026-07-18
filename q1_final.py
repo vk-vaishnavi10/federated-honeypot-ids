@@ -52,6 +52,9 @@ def rr(g,Xt,yt):
 print("=== SENTINEL SWEEP: how many honeypots must see the rare attack? ===")
 print(f"{'#sentinels':>11} | federated recall")
 print("-"*34)
+import os,csv
+os.makedirs("results",exist_ok=True)
+_sent_rows=[]
 for ns in [1,2,3,5]:
     vals=[]
     for s in range(5):
@@ -63,8 +66,12 @@ for ns in [1,2,3,5]:
             g.load_state_dict(fedavg(lms,sz))
         vals.append(rr(g,Xt,yt))
     v=np.array(vals); print(f"{ns:>11} | {v.mean():.3f} ± {v.std():.3f}")
+    _sent_rows.append({"dataset":"Honeypot","sentinels":ns,"recall_mean":round(float(v.mean()),4),"recall_std":round(float(v.std()),4)})
 
 # ===== 2. PARADIGM BASELINES =====
+with open("results/sentinel_honeypot.csv","w",newline="") as _f:
+    _w=csv.DictWriter(_f,fieldnames=["dataset","sentinels","recall_mean","recall_std"]); _w.writeheader(); _w.writerows(_sent_rows)
+print("saved results/sentinel_honeypot.csv")
 print("\n=== PARADIGM COMPARISON (held-out recon, 3 sentinels) ===")
 cen,loc,fed=[],[],[]
 for s in range(5):
@@ -88,3 +95,13 @@ print("-"*54)
 print(f"{'centralized (pool all data)':34s} {cen.mean():.3f} | violated")
 print(f"{'local-only (isolated honeypot)':34s} {loc.mean():.3f} | preserved (useless)")
 print(f"{'federated (ours)':34s} {fed.mean():.3f} | preserved")
+
+# --- save results for reproducible figures ---
+import os, csv
+os.makedirs("results", exist_ok=True)
+with open("results/paradigm.csv","w",newline="") as f:
+    w=csv.writer(f); w.writerow(["paradigm","recall_mean","recall_std"])
+    w.writerow(["centralized", round(float(cen.mean()),4), round(float(cen.std()),4)])
+    w.writerow(["local_only",  round(float(loc.mean()),4), round(float(loc.std()),4)])
+    w.writerow(["federated",   round(float(fed.mean()),4), round(float(fed.std()),4)])
+print("saved results/paradigm.csv")

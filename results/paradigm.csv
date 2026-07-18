@@ -1,0 +1,4 @@
+paradigm,recall_mean,recall_std
+centralized,0.998,0.0025
+local_only,0.0,0.0
+federated,0.9906,0.0099

@@ -1,0 +1,6 @@
+method,recall_mean,recall_std
+isolated honeypot,0.0,0.0
+FedAvg,0.7386,0.0221
+FedProx,0.0,0.0
+FedAvg + SMOTE,0.8438,0.0258
+FedAvg + GAN (ours),0.7976,0.0251

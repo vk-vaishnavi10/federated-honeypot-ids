@@ -1,0 +1,4 @@
+dataset,sentinels,recall_mean,recall_std
+CICIDS2017,3,0.6521,0.1226
+CICIDS2017,5,0.9103,0.0153
+CICIDS2017,7,0.9808,0.0019

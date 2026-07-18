@@ -134,3 +134,12 @@ print(f"\n{'method':28s} mean ± std  (n=5)")
 print("-"*50)
 for k in keys:
     a=np.array(acc[k]); print(f"{names[k]:28s} {a.mean():.3f} ± {a.std():.3f}")
+
+# --- save results for reproducible figure ---
+import os as _os, csv as _csv
+_os.makedirs("results", exist_ok=True)
+with open("results/baselines.csv","w",newline="") as _f:
+    _w=_csv.writer(_f); _w.writerow(["method","recall_mean","recall_std"])
+    for _k in keys:
+        _a=np.array(acc[_k]); _w.writerow([names[_k], round(float(_a.mean()),4), round(float(_a.std()),4)])
+print("saved results/baselines.csv")
